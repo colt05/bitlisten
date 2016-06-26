@@ -12,12 +12,12 @@
 		<link rel="stylesheet" type="text/css" href="ie.css">
 		<![endif]-->
 		<script>
-		var showDialog = Boolean(localStorage["warn_mixed_content"]) || true; //show dialog if mixed content warning is not set
+		var showDialog = Boolean(localStorage["dcrlisten-warn_mixed_content"]) || true; //show dialog if mixed content warning is not set
 		if (showDialog == true) {
 		if ("https:" != window.location.protocol) { //check if the protocol is the same as the one used with Decred socket.io
 			alert("WARNING: You will need to enable mixed content to use dcrlisten. This message will only show once if you have localStorage.")
 			try {
-			 	localStorage["warn_mixed_content"] = false;
+			 	localStorage["dcrlisten-warn_mixed_content"] = false;
 			} catch(err) {
 				//do nothing.
 			}	
