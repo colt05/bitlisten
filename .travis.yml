@@ -4,23 +4,25 @@ env:
   - ENCRYPTION_LABEL: 14f59a8a5f3c
   - COMMIT_AUTHOR_EMAIL: fake@email.yml
   - secure: sZYjvhGR6xuFaztWaArXRfo7bh9okBL85uYkS5RLaa3x3AUwuzxlPDdnAaBT4NUhs1zQ+sC7b61twrtjAM8II2yZSyT6sbr48nbKpOkxzY0uWxeMbOuVuFuo+uTy2VBjUseIEXyuHks/xdE2aq0i+OWNMwANBwg0EikWIEDPqPaMMTVg+1b6AL/WFasQDEA8/g9FiJnURH/dgcSHObRMFjqfmKg2bw44ORODwngrzTfYLIVRyHtARcHI4GoOoWDNZNsaS7wlYyhdJv2TqnYMsQ22Geld6OmziJiZI3+oBYPPqbHe54oEhwj3nr8MW2VX0YU9SnIS/JPKI0EYD1hWAmtoB51INT/W9i/FsQUlGW0gqmyiNBZw0VM2EMeOWL8R+qkJtHu3qOWcHLKx26D9UTzNSpjZ4yVPh9gMbm1vQnkvlu+EHfNH2glnGMF6OzRirWwPI58RgHk1Y1dMjw29UK/NozLs90WK/5sUSzUhp7093kMlIWfZkT9kAGNVnVBA8CAlEbINhVYDhaOv7OKeVQOD1EOSZkVcWmSp6U00abQGUlITM0LMerN0+weDZSYuOzrJZsJvKlvHT1JcnWs+Xwri1wWJDG5+KkhGlg6epAKf8E9aabnkLNLHcQC4pR4pqsUxFYI22NPhDbNxjmdhKOfkaBvGn6VME3qqmNnlR5s=
-before_install: 
- - ls
- - git clone --branch=gh-pages https://github.com/colt05/dcrlisten.git 
- - cd dcrlisten 
- - ls
- - npm install -g grunt-cli
- - echo "="
+  - secure: mEl6x6gntGFzNoeGLxhJ6HrPB0K906cZmciLUo7r3hfng/Xowq8+a8soHs4BNw5e1XV+e6DcZdvHFQPOF+xTEv+zBoYBRWHT2k1YLzUebiXdh3ZDozIlRZ3m9hsCwuaqfe00HyzOXRiUP52zom2FGCa9M+GjrNbgGKoRqNiB6jWNKDmtFVygC1DFn7qe96cl4u/di1NpYRtkoj0jvx+7odw+r4/ELfE9nDwMylAee6CB8kOxCSsTSQ/dAix+IEDWRc8rJNe5Kwk5dlrjwgbv3xbx7aUrE9BC1/g04wv/ojU/wsrL5bBpP+HPUKkhf5cnnwrk2tHUEFWQZWbUeS5Gmg57F0a8VPAiutSTKkkg6B5ztu5TnVJyNyMygNryW1OXNHDhS+vReUuxlJ5OQhgMHZhvXkoykreoN5sUnWkNy/hWAPQUOjXhNkuvVcYqtm6aBvmi3NxvYEdJ5dPVtRhknwj8Bw6cr2PMeRpnn2+2e6+0WNVfTCgIk3FX2yUC6DQn+JlqiRcjxxn8r7aiwFBlKemhUT5hER3ttZcuDuG+OxRU7c9uyuM8JbbEZ/TIkIl4GbD+ZceNFHRiI6eBUy9SWsv73H/syCMnB8hDqFYefp+GKY6mhWovyhqhF8guhxiGLB6ayrO/u+pMDnxr6036dk2hirDSSkuPAk8HFdFu6JQ=
+before_install:
+- ls
+- git clone --branch=gh-pages https://github.com/colt05/dcrlisten.git
+- cd dcrlisten
+- ls
+- npm install -g grunt-cli
+- echo "="
 install: npm install
 script: grunt && chmod +x deploy.sh
 after_success:
- - git config user.name "Travis CI" >> /dev/null && echo set name
- - git config user.email "$COMMIT_AUTHOR_EMAIL" >> /dev/null && echo set email
- - git remote rm origin && echo removed old origin
- - git remote add origin https://colt05-ci:${GH_TOKEN}@github.com/colt05/dcrlisten.git && echo added neworigin
- - git add . && echo added files to commit
- - git commit -m "travis build" && echo added commit
- - git push -u -f origin gh-pages && echo pushed
+- git config user.name "Travis CI" >> /dev/null && echo set name
+- git config user.email "$COMMIT_AUTHOR_EMAIL" >> /dev/null && echo set email
+- git remote rm origin && echo removed old origin
+- git remote add origin https://colt05-ci:${GH_TOKEN}@github.com/colt05/dcrlisten.git
+  && echo added neworigin
+- git add . && echo added files to commit
+- git commit -m "travis build" && echo added commit
+- git push -u -f origin gh-pages && echo pushed
 branches:
   only:
   - gh-pages
